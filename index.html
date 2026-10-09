@@ -1,403 +1,912 @@
 <html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>NEXORA GAMING</title>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
 
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #10111a;
-            color: white;
-            line-height: 1.6;
-        }
+<title>TPS-School website
+</title>
 
-        .container {
-            width: 90%;
-            max-width: 1100px;
-            margin: auto;
-        }
+<style>
+*{
+padding: 0:
+margin: 0;
+box-sizing: border-box;
+}
+html{
+scroll-behaviour : smooth;
+}
+body{
+font-family:Arial , sans-serif;
+Background: #0b0f19;
 
-        /* Navbar uses CSS Grid */
-        header {
-            background-color: #191a27;
-            padding: 18px 0;
-        }
+color :white;
+}
+.navbar {
+    width: 100%;
+    padding: 10px 8%;
 
-        .navbar {
-            display: grid;
-            grid-template-columns: 1fr 2fr 1fr;
-            align-items: center;
-            gap: 15px;
-        }
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
 
-        .logo {
-            color: white;
-            font-size: 24px;
-            font-weight: bold;
-            text-decoration: none;
-        }
-		button  {
-		color:white;
-		background-color: #a855f7;
-		font-size:20px;
-		padding:5px 7px;
-		}
+    background: #0b0f19;
+    border-bottom: 1px solid #202637;
+}
+.mouse-glow {
+    position: fixed;
+    left: 50%;
+    top: 50%;
 
-        .nav-links {
-            display: grid;
-            grid-template-columns: repeat(4, auto);
-            justify-content: center;
-            gap: 18px;
-            list-style: none;
-        }
+    width: 250px;
+    height: 250px;
 
-        .nav-links a {
-            color: white;
-            text-decoration: none;
-            font-size: 14px;
-        }
+    border-radius: 50%;
 
-        .nav-button {
-            justify-self: end;
-            background-color: #7d45c7;
-            color: white;
-            text-decoration: none;
-            padding: 9px 12px;
-            font-size: 13px;
-        }
+    background: rgba(0, 140, 255, 0.18);
 
-        /* Hero section uses CSS Grid */
-        .hero {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            align-items: center;
-            gap: 30px;
-            padding-top: 50px;
-            padding-bottom: 50px;
-        }
+    filter: blur(60px);
 
-        .hero h1 {
-            font-size: 48px;
-            line-height: 1.15;
-            margin: 15px 0;
-        }
+    pointer-events: none;
 
-        .hero h1 span {
-            color: #a879ed;
-        }
+    transform: translate(-50%, -50%);
 
-        .hero p {
-            color: #ccccd5;
-            margin-bottom: 20px;
-        }
-		.logo span {
-    color: #a855f7;
+    z-index: 0;
+
+    transition: left 0.15s ease-out, top 0.15s ease-out;
 }
 
-        .button {
-            display: inline-block;
-            background-color: #7d45c7;
-            color: white;
-            text-decoration: none;
-            padding: 10px 14px;
-            margin: 5px 5px 0 0;
-        }
+/* Website ka content glow ke upar rahe */
+body > *:not(.mouse-glow) {
+    position: relative;
+    z-index: 1;
+}
 
-        .hero img {
-            width: 100%;
-            height: 300px;
-            object-fit: cover;
-        }
+h2{
+    font-size: 28px;
+    font-weight: bold;
+    color: #00e5ff;
+}
+.btn {
+    position: relative;
+    overflow: hidden;
+}
 
-        /* Stats section uses CSS Grid */
-        .stats {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            text-align: center;
-            gap: 15px;
-            background-color: #191a27;
-            padding: 20px;
-        }
+.btn::before {
+    content: "";
+    position: absolute;
 
-        .stats h2 {
-            color: #a879ed;
-        }
+    top: 0;
+    left: -100%;
 
-        /* Games section uses CSS Grid */
-        .section {
-            padding-top: 50px;
-            padding-bottom: 50px;
-        }
+    width: 50%;
+    height: 100%;
 
-        .section h2 {
-            margin-bottom: 8px;
-        }
+    background: linear-gradient(
+        90deg,
+        transparent,
+        rgba(255,255,255,0.35),
+        transparent
+    );
 
-        .section-intro {
-            color: #ccccd5;
-            margin-bottom: 25px;
-        }
+    transform: skewX(-20deg);
+    transition: 0.6s;
+}
 
-        .games-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 20px;
-        }
+.btn:hover::before {
+    left: 150%;
+}
 
-        .game-card {
-            background-color: #191a27;
-        }
+.links {
+    display: flex;
+    align-items: center;
+    gap: 30px;
+}
 
-        .game-card img {
-            width: 100%;
-            height: 180px;
-            object-fit: cover;
-        }
+.links a {
+    color: #c7cbd6;
+    transition: 0.3s;
+}
 
-        .game-info {
-            padding: 15px;
-        }
+.sport {
+    color: #00e5ff;
+}
 
-        .game-info h3 {
-            margin: 8px 0;
-        }
+.sport{
+    padding: 15px 30px;
+    border-radius: 7px;
 
-        .game-info p {
-            color: #ccccd5;
-            font-size: 14px;
-        }
+    background: #00e5ff;
+    color: #071018;
+    font-weight: bold;
+}
 
-        /* Esports section uses CSS Grid */
-        .esports {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            align-items: center;
-            gap: 25px;
-            background-color: #191a27;
-            padding: 25px;
-        }
 
-        .esports p {
-            color: #ccccd5;
-            margin: 12px 0;
-        }
+a{
+text-decoration: none;
+color: inherit;}
 
-        .esports img {
-            width: 100%;
-            height: 250px;
-            object-fit: cover;
-        }
 
-        .community {
-            text-align: center;
-            background-color: #191a27;
-            padding: 40px 15px;
-        }
 
-        .community p {
-            color: #ccccd5;
-            margin: 12px auto;
-            max-width: 550px;
-        }
+.type{
+    min-height: 650px;
+    padding: 80px 8%;
 
-        /* Footer uses CSS Grid */
-        footer {
-            padding: 20px 0;
-        }
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 50px;
 
-        .footer-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 12px;
-            align-items: center;
-        }
+    background:
+        radial-gradient(circle at 80% 40%, #123c55, transparent 35%),
+        #0b0f19;
+}
 
-        .footer-links {
-            display: grid;
-            grid-template-columns: repeat(3, auto);
-            justify-content: end;
-            gap: 15px;
-        }
+.type-content {
+    max-width: 650px;
 
-        footer a {
-            color: white;
-            text-decoration: none;
-        }
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
 
-        .copyright {
-            grid-column: 1 / -1;
-            color: #ccccd5;
-            font-size: 13px;
-        }
+.small-title {
+    color: #00e5ff;
+    font-weight: bold;
+    letter-spacing: 3px;
+    margin-bottom: 15px;
+}
 
-        /* Simple responsive layout */
-        @media (max-width: 750px) {
-            .navbar {
-                grid-template-columns: 1fr;
-                text-align: center;
-            }
+.type h1 {
+    font-size: clamp(45px, 7vw, 80px);
+    line-height: 1;
+    margin-bottom: 25px;
+}
 
-            .nav-links {
-                grid-template-columns: repeat(4, auto);
-            }
+.type h1 span {
+    color: #00e5ff;
+}
 
-            .nav-button {
-                justify-self: center;
-            }
+.type-text {
+    max-width: 550px;
+    color: #aeb5c5;
+    font-size: 18px;
+    margin-bottom: 30px;
+}
 
-            .hero,
-            .esports {
-                grid-template-columns: 1fr;
-            }
+.type-buttons {
+    display: flex;
+    gap: 15px;
+    flex-wrap: wrap;
+}
 
-            .games-grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
+.primary-btn,
+.secondary-btn {
+    padding: 13px 25px;
+    border-radius: 6px;
+    font-weight: bold;
+}
 
-            .footer-grid {
-                grid-template-columns: 1fr;
-                text-align: center;
-            }
+.primary-btn {
+    background: #00e5ff;
+    color: #071018;
+}
 
-            .footer-links {
-                justify-content: center;
-            }
+.secondary-btn {
+    border: 1px solid #00e5ff;
+    color: #00e5ff;
+}
 
-            .copyright {
-                grid-column: auto;
-            }
-        }
+.type-card {
+    width: 320px;
+    min-height: 350px;
+    padding: 40px;
 
-        @media (max-width: 500px) {
-            .nav-links {
-                grid-template-columns: repeat(2, auto);
-            }
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
 
-            .hero h1 {
-                font-size: 38px;
-            }
+    text-align: center;
 
-            .stats,
-            .games-grid {
-                grid-template-columns: 1fr;
-            }
-        }
-    </style>
+    background: #141a28;
+    border: 1px solid #293247;
+    border-radius: 20px;
+
+    box-shadow: 0 20px 60px #00000055;
+}
+
+.controller {
+    font-size: 100px;
+    margin-bottom: 20px;
+}
+
+.type-card p {
+    color: #9da6b8;
+}
+.games-section {
+    padding: 90px 8%;
+    background: #101521;
+}
+
+.section-heading {
+    text-align: center;
+    margin-bottom: 50px;
+}
+
+.section-heading p {
+    color: #00e5ff;
+    letter-spacing: 3px;
+    font-weight: bold;
+}
+
+.section-heading h2 {
+    font-size: 45px;
+}
+
+.event-container {
+    display: flex;
+    justify-content: center;
+    gap: 25px;
+    flex-wrap: wrap;
+}
+
+.event-card {
+    flex: 1 1 280px;
+    max-width: 350px;
+
+    padding: 30px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+
+    background: #171e2c;
+    border: 1px solid #283247;
+    border-radius: 15px;
+
+    transition: 0.3s;
+}
+
+.event-card:hover {
+    transform: translateY(-8px);
+    border-color: #00e5ff;
+}
+
+.event-icon {
+    width: 70px;
+    height: 70px;
+    margin-bottom: 20px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background: #0c3541;
+    border-radius: 12px;
+
+    font-size: 35px;
+}
+
+.event-card h3 {
+    font-size: 24px;
+    margin-bottom: 10px;
+}
+
+.event-card p {
+    color: #9da6b8;
+    margin-bottom: 20px;
+}
+
+.event-card a {
+    color: #00e5ff;
+    font-weight: bold;
+}
+
+.future {
+    padding: 100px 8%;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 70px;
+}
+
+.future-text {
+    flex: 1;
+}
+
+.future-text h2 {
+    font-size: 50px;
+    line-height: 1.1;
+    margin-bottom: 25px;
+
+}
+.reveal {
+    opacity: 0;
+    transform: translateY(40px);
+    transition: 0.8s ease;
+}
+
+.reveal.show {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+
+.future-text h2 span {
+    color: #00e5ff;
+}
+
+.future-text > p:last-child {
+    color: #9da6b8;
+    max-width: 550px;
+}
+
+.future-list {
+    flex: 1;
+
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.future-item {
+    padding: 20px;
+
+    display: flex;
+    align-items: center;
+    gap: 20px;
+
+    background: #141a28;
+    border-radius: 10px;
+    border: 1px solid #283247;
+}
+
+.future-item > span {
+    font-size: 25px;
+    font-weight: bold;
+    color: #00e5ff;
+}
+
+.future-item h3 {
+    margin-bottom: 3px;
+}
+
+.future-item p {
+    color: #9da6b8;
+}
+footer {
+    padding: 50px 8% 20px;
+    background: #070a11;
+}
+
+.footer-f {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 30px;
+
+    padding-bottom: 30px;
+}
+
+.footer-f h2 {
+    color: #00e5ff;
+}
+
+.footer-f p {
+    color: #8992a5;
+}
+
+.footer-links {
+    display: flex;
+    gap: 25px;
+}
+
+.footer-links a:hover {
+    color: #00e5ff;
+}
+
+.copyright {
+    padding-top: 20px;
+    border-top: 1px solid #202637;
+
+    text-align: center;
+    color: #697286;
+}
+
+@media (max-width: 800px) {
+
+    .navbar {
+        flex-wrap: wrap;
+        gap: 20px;
+    }
+
+    .nav-links {
+        order: 3;
+        width: 100%;
+
+        justify-content: center;
+        flex-wrap: wrap;
+    }
+
+    .type {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .type-content {
+        align-items: center;
+    }
+
+    .type-card {
+        width: 100%;
+        max-width: 350px;
+    }
+
+    .future {
+        flex-direction: column;
+    }
+
+    .future-text {
+        text-align: center;
+    }
+
+    .future-text > p:last-child {
+        margin: auto;
+    }
+
+    .footer-f {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+
+    .footer-links {
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+}
+
+
+@media (max-width: 500px) {
+
+    .navbar {
+        padding: 18px 5%;
+    }
+
+    .sport {
+        display: none;
+    }
+
+    .event {
+        padding: 60px 5%;
+    }
+
+    .games-section,
+    .features {
+        padding: 70px 5%;
+    }
+
+    .type h1 {
+        font-size: 45px;
+    }
+
+    .section-heading h2 {
+        font-size: 35px;
+    }
+
+    .future-text h2 {
+        font-size: 38px;
+    }
+
+    .event-card {
+        max-width: 100%;
+    }
+}
+
+.footer-f p{ background:
+        radial-gradient(circle at 80% 40%, #123c55, transparent 35%),
+        #0b0f19;
+}
+/* =========================
+   ANIMATED GLOWING LINE
+========================= */
+
+.navbar {
+    position: relative;
+    overflow: hidden;
+}
+
+
+/* Moving cyan line */
+
+.navbar::after {
+    content: "";
+
+    position: absolute;
+
+    bottom: 0;
+    left: -30%;
+
+    width: 30%;
+    height: 2px;
+
+    background: linear-gradient(
+        90deg,
+        transparent,
+        #5ee7ff,
+        white,
+        #5ee7ff,
+        transparent
+    );
+
+    box-shadow:
+        0 0 8px #5ee7ff,
+        0 0 18px #5ee7ff,
+        0 0 30px rgba(94, 231, 255, 0.7);
+
+    animation: movingLine 3s linear infinite;
+}
+
+
+/* Animation */
+
+@keyframes movingLine {
+
+    0% {
+        left: -30%;
+    }
+
+    100% {
+        left: 100%;
+    }
+
+}/* =========================
+   FULL WEBSITE BACKGROUND
+========================= */
+
+
+body {
+    margin: 0;
+    min-height: 100%;
+    background: #020817;
+}
+
+body {
+    position: relative;
+    overflow-x: hidden;
+}
+
+/* Blue glowing light */
+
+body::before {
+    content: "";
+
+    position: fixed;
+
+    width: 700px;
+    height: 700px;
+
+    right: -200px;
+    top: 50%;
+
+    transform: translateY(-50%);
+
+    background: radial-gradient(
+        circle,
+        rgba(0, 100, 255, 0.35) 0%,
+        rgba(0, 80, 255, 0.15) 35%,
+        transparent 70%
+    );
+
+    filter: blur(30px);
+
+    animation: blueGlow 6s ease-in-out infinite alternate;
+
+    pointer-events: none;
+    z-index: -2;
+}
+
+/* Second blue glow */
+
+body::after {
+    content: "";
+
+    position: fixed;
+
+    width: 500px;
+    height: 500px;
+
+    left: -150px;
+    top: 20%;
+
+    background: radial-gradient(
+        circle,
+        rgba(0, 180, 255, 0.20) 0%,
+        transparent 70%
+    );
+
+    filter: blur(40px);
+
+    animation: blueGlow2 8s ease-in-out infinite alternate;
+
+    pointer-events: none;
+    z-index: -2;
+}
+
+
+/* =========================
+   GLOW ANIMATION
+========================= */
+
+@keyframes blueGlow {
+    0% {
+        transform: translate(0, -50%) scale(1);
+        opacity: 0.6;
+    }
+
+    100% {
+        transform: translate(-100px, -45%) scale(1.2);
+        opacity: 1;
+    }
+}
+
+@keyframes blueGlow2 {
+    0% {
+        transform: translate(0, 0) scale(1);
+        opacity: 0.5;
+    }
+
+    100% {
+        transform: translate(100px, 50px) scale(1.3);
+        opacity: 0.9;
+    }
+}
+
+
+/* =========================
+   FLOATING PARTICLES
+========================= */
+
+body .particles {
+    position: fixed;
+    inset: 0;
+
+    pointer-events: none;
+    z-index: -1;
+}
+
+.particles span {
+    position: absolute;
+
+    width: 5px;
+    height: 5px;
+
+    background: #5ee7ff;
+
+    border-radius: 50%;
+
+    box-shadow: 0 0 12px #5ee7ff;
+
+    animation: floatParticle 5s infinite ease-in-out;
+}
+
+.particles span:nth-child(1) {
+    left: 20%;
+    top: 30%;
+}
+
+.particles span:nth-child(2) {
+    left: 40%;
+    top: 70%;
+    animation-delay: 1s;
+}
+
+.particles span:nth-child(3) {
+    left: 60%;
+    top: 25%;
+    animation-delay: 2s;
+}
+
+.particles span:nth-child(4) {
+    left: 75%;
+    top: 65%;
+    animation-delay: 3s;
+}
+
+.particles span:nth-child(5) {
+    left: 85%;
+    top: 35%;
+    animation-delay: 1.5s;
+}
+
+.particles span:nth-child(6) {
+    left: 50%;
+    top: 50%;
+    animation-delay: 2.5s;
+}
+
+@keyframes floatParticle {
+    0% {
+        transform: translateY(0) scale(1);
+        opacity: 0.3;
+    }
+
+    50% {
+        transform: translateY(-30px) scale(1.5);
+        opacity: 1;
+    }
+
+    100% {
+        transform: translateY(0) scale(1);
+        opacity: 0.3;
+    }
+}
+
+</style>
+
 </head>
+
 <body>
-    <header>
-        <nav class="navbar container">
-            <a href="#home" class="logo">NEX<span>ORA</span></a>
+<header class="navbar">
+     <h2> T P S </h2>
+	 
+     <nav class="links">
+	 <a href="#home">HOME</a>
+	 <a href="#event">EVENTS</a>
+	  <a href="#classes">ADVANTAGE</a>
+    <a href="#contact">CONTACT</a>
+	 </nav>
+	 <a href="#contact" class="sport">Contact Now</a>
+</header>
+<section class="type" id="home">
+<div class="particles">
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+</div>
+ <div class="type-content">
+            <p class="small-title">WELCOME TO TPS</p>
 
-            <ul class="nav-links">
-                <li><a href="#home">Home</a></li>
-                <li><a href="#games">Games</a></li>
-                <li><a href="#esports">Esports</a></li>
-                <li><a href="#community">Community</a></li>
-            </ul>
+            <h1>
+                THE
+                <span>PROGRAMMERS SCHOOL</span>
+            </h1>
 
-            <a href="#games" class="nav-button">Explore Games</a>
-        </nav>
-    </header>
+            <p class="type-text">
+This website aims to keep you updated & informed about TPS activities & important information.
+            </p>
 
-    <main>
-        <section class="hero container" id="home">
-            <div>
-                <p>WELCOME TO NEXORA</p>
-                <h1>PLAY BEYOND <span>LIMITS.</span></h1>
-                <p>Discover gaming worlds, play your favourite games, and meet other players.</p>
-                <a href="#games" class="button">Explore Games</a>
-                <a href="#community" class="button">Join Community</a>
+            <div class="type-buttons">
+                <a href="#classes" class="primary-btn">Primary</a>
+                <a href="#classes" class="secondary-btn">Secondary</a>
+            </div>
+        </div>
+
+        <div class="type-card">
+            <div class="controller">??</div>
+            <h2>Ready to Admission</h2>
+            <p>For More Information, You need to Contact US.</p>
+        </div>
+
+    </section>
+<section class="events-section" id="event">
+
+        <div class="section-heading">
+            <p>The way to predict your Future is to create it!</p>
+            <h2>Popular EVENTS</h2>
+        </div>
+
+        <div class="event-container">
+
+            <div class="event-card">
+                <div class="event-icon">1</div>
+                <h3>PICNICS</h3>
+                <p>Make your events into the Ultimate & Memorable Events with TPS.</p>
+                <a href="#">Goin Us?</a>
             </div>
 
-            <div>
-                <img src="https://images.unsplash.com/photo-1593305841991-05c297ba4575?q=80&w=757&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Gaming event">
-				
+            <div class="event-card">
+                <div class="event-icon">2</div>
+                <h3>SPORTS</h3>
+                <p>Enjoy & Participates in the sports & others activities with TPS .</p>
+                <a href="#">Goin Us ?</a>
             </div>
-        </section>
 
-        <section class="stats container">
-            <div>
-                <h2>50+</h2>
-                <p>Games</p>
+            <div class="event-card">
+                <div class="event-icon">3</div>
+                <h3>CELEBRATIONS</h3>
+                <p>Celebrate your national days & other celebrations with TPS.</p>
+                <a href="#">Goin Us ?</a>
             </div>
-            <div>
-                <h2>100K+</h2>
-                <p>Players</p>
-            </div>
-            <div>
-                <h2>24/7</h2>
-                <p>Gaming</p>
-            </div>
-        </section>
 
-        <section class="section container" id="games">
-            <h2>Featured Games</h2>
-            <p class="section-intro">Choose a game and start playing.</p>
+        </div>
 
-            <div class="games-grid">
-                <article class="game-card">
-                    <img src="https://images.unsplash.com/photo-1511512578047-dfb367046420?auto=format&fit=crop&w=800&q=80" alt="Gaming setup">
-                    <div class="game-info">
-                        <h3>Cyber Strike</h3>
-                        <p>Enter the arena and test your skills.</p>
-                    </div>
-                </article>
+    </section>
+  <section class="future" id="classes">
 
-                <article class="game-card">
-                    <img src="https://images.unsplash.com/photo-1493711662062-fa541adb3fc8?auto=format&fit=crop&w=800&q=80" alt="Game controller">
-                    <div class="game-info">
-                        <h3>Neon Realms</h3>
-                        <p>Explore new places and complete missions.</p>
-                    </div>
-                </article>
+        <div class="future-text">
+            <p class="small-title">WHY YOU GOIN TPS ?</p>
 
-                <article class="game-card">
-                    <img src="https://images.unsplash.com/photo-1542751371-adc38448a05e?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8Z2FtaW5nfGVufDB8fDB8fHww" alt="Gaming computer">
-                    <div class="game-info">
-                        <h3>Pixel Warriors</h3>
-                        <p>Play with friends and work as a team.</p>
-                    </div>
-                </article>
-            </div>
-        </section>
+            <h2>
+                Teaching Styles
+                <span>Modern & Fun</span>
+            </h2>
 
-        <section class="section container" id="esports">
-            <div class="esports">
+            <p>
+                TPS gives different environment experiences together
+                in one place. Childrens discover new type of learning and enjoy learning with a modern and advanced education.
+            </p>
+        </div>
+
+        <div class="future-list">
+
+            <div class="future-item">
+                <span>01</span>
                 <div>
-                    <h2>Esports</h2>
-                    <p>Play competitively, improve your skills, and meet other players.</p>
-                    <a href="#community" class="button">Join Community</a>
+                    <h3>Conceptual based learning</h3>
+                    <p>Your children can read chapter thoroughly & solve exercises, your children can easily give answers of conceptual based questions.</p>
                 </div>
-                <img src="https://images.unsplash.com/photo-1633545495735-25df17fb9f31?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTh8fGVzcG9ydHxlbnwwfHwwfHx8MA%3D%3D" alt="Esports event">
             </div>
-        </section>
 
-        <section class="community" id="community">
-            <div class="container">
-                <h2>Join Our Community</h2>
-                <p>Meet other gamers, share your interests, and discover new games.</p>
-               <button>Contact Us</button>
+            <div class="future-item">
+                <span>02</span>
+                <div>
+                    <h3>Brilliant Teachers</h3>
+                    <p>We hired only those teachers who are gold medalists in  her subject & teachers teaching style are totally different from others schools.</p>
+                </div>
             </div>
-        </section>
-    </main>
 
-    <footer>
-        <div class="container footer-grid">
-            <a href="#home" class="logo">NEXORA</a>
+            <div class="future-item">
+                <span>03</span>
+                <div>
+                    <h3>Environment </h3>
+                    <p>A clean and attractive environments experience.</p>
+                </div>
+            </div>
+
+        </div>
+
+    </section>
+ <footer id="contact">
+
+        <div class="footer-f">
+            <div>
+                <h2>For Contact with TPS</h2>
+                <p>Your next step. <br> Starts new beginning.<br>
+<strong>Follow on WhatsApp channel name is <em>"The Programmers School".</em>  </strong></p>
+            </div>
+
             <div class="footer-links">
                 <a href="#home">Home</a>
-                <a href="#games">Games</a>
-                <a href="#community">Community</a>
+                <a href="#event">Events</a>
+                <a href="#classes">Advantage</a>
             </div>
-            <p class="copyright">Copyright 2026 NEXORA Gaming.</p>
         </div>
+
+        <div class="copyright">
+           Made by the student of TPS<br> © 2026 The Programmers School. <br>All rights reserved.
+        </div>
+
     </footer>
+<div class="mouse-glow"></div>
+
+<script>
+const glow = document.querySelector(".mouse-glow");
+
+document.addEventListener("mousemove", function(e) {
+    glow.style.left = e.clientX + "px";
+    glow.style.top = e.clientY + "px";
+});
+</script>
+
+<script>
+</script>
+
+
+
+
 </body>
+
 </html>
